@@ -23,7 +23,7 @@
       <button @click="onSave">Добавить в хранилище</button>
     </form>
 
-    <router-link to="/cart">go to cart</router-link>
+    <router-link to="/cart">перейти в корзину</router-link>
   </div>
 </template>
 <script setup>

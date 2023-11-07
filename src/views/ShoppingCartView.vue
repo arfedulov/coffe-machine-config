@@ -10,6 +10,8 @@
         <button @click="onCountChange(model.id, 1)">+</button>
       </li>
     </ul>
+
+    <router-link to="/">перейти в конфигуратор</router-link>
   </div>
 </template>
 
