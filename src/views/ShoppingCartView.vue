@@ -24,7 +24,7 @@ const configurationStore = useConfiguratorStore()
 
 const modelsList = ref([])
 onMounted(async () => {
-  modelsList.value = await getModels(`${configurationStore.selectedMachineTypeId}+${configurationStore.selectedDrinkOptionCountId}`)
+  modelsList.value = await getModels(`${configurationStore.selectedMachineTypeId}-${configurationStore.selectedDrinkOptionCountId}`)
 })
 
 const clamp = (min, max, value) => {
