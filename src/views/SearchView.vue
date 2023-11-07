@@ -39,17 +39,18 @@ const _selectedDrinkOptionCountId = ref('')
 const selectedMachineTypeLabel = computed(() => machineTypes.value.find(t => t.id === _selectedMachineTypeId.value)?.label || '')
 const selectedDrinkOptionCountLabel = computed(() => drinkOptionCounts.value.find(opt => opt.id === _selectedDrinkOptionCountId.value)?.label || '')
 
+const configurationStore = useConfiguratorStore()
+
 onMounted(async () => {
   const configurations = await getConfigurations()
   machineTypes.value = configurations.machineTypes
   drinkOptionCounts.value = configurations.drinkOptionCounts
-  _selectedMachineTypeId.value = configurations.machineTypes[0].id
-  _selectedDrinkOptionCountId.value = configurations.drinkOptionCounts[0].id
+  _selectedMachineTypeId.value = configurationStore.selectedMachineTypeId || configurations.machineTypes[0].id
+  _selectedDrinkOptionCountId.value = configurationStore.selectedDrinkOptionCountId|| configurations.drinkOptionCounts[0].id
 })
 
 const machineImage = computed(() => _selectedMachineTypeId.value ? `https://placehold.co/600x400?text=${_selectedMachineTypeId.value}` : '')
 
-const configurationStore = useConfiguratorStore()
 const onSave = () => {
   configurationStore.saveConfig({
     selectedMachineTypeId: _selectedMachineTypeId.value,

@@ -18,4 +18,4 @@ export const useConfiguratorStore = defineStore('configurator', () => {
 
     saveConfig,
   }
-})
+}, { persist: true })
